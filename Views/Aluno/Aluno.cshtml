@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Alunos";
+}
+
+@model List<TesteCrudProfessoresAlunos.Models.AlunoViewModel>
+
+<h1>@ViewData["Title"]</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome do Aluno</th>
+            <th>Mensalidade</th>
+            <th>Data Vencimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aluno in Model)
+        {
+            <tr>
+                <td>@aluno.Nome</td>
+                <td>@aluno.Mensalidade</td>
+                <td>@aluno.Vencimento</td>
+            </tr>
+        }
+    </tbody>
+</table>

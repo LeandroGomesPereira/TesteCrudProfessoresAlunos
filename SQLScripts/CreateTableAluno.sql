@@ -1,0 +1,30 @@
+USE [RelacaoProfessorAluno]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Aluno](
+	[Id] [nchar](10) NOT NULL,
+	[Nome] [nchar](50) NOT NULL,
+	[Mensalidade] [decimal](3, 2) NULL,
+	[DataVencimento] [date] NULL,
+	[IdProfessor] [nchar](10) NULL FOREIGN KEY REFERENCES dbo.Professor(id),
+ CONSTRAINT [PK_Aluno] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Aluno]  WITH CHECK ADD  CONSTRAINT [FK_IdProfessor] FOREIGN KEY([Id])
+REFERENCES [dbo].[Aluno] ([Id])
+GO
+
+ALTER TABLE [dbo].[Aluno] CHECK CONSTRAINT [FK_IdProfessor]
+GO
+
+
